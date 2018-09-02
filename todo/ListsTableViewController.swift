@@ -17,6 +17,7 @@ class ListsTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Todo List"
         navigationItem.leftBarButtonItem = self.editButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddUserAlertController))
         tableview.reloadData()
     }
     
@@ -27,10 +28,29 @@ class ListsTableViewController: UITableViewController {
     }
     
     @objc public func showAddUserAlertController() {
-        let alertCtrl = UIAlertController(title: "Add User", message: "Add a user to the list", preferredStyle: .alert)
-        present(alertCtrl, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Enter your todo item", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input title here..."}
+        )
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input description here..."}
+        )
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            let name = alert.textFields?[0].text
+            let des = alert.textFields?[1].text
+            let todoItemInstance = TodoItem(itemTitle: name!, descriptionText: des!)
+            store.todos.append(todoItemInstance)
+            self.tableView.reloadData()
+        }))
+        
+        self.present(alert, animated: true)
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return store.todos.count
