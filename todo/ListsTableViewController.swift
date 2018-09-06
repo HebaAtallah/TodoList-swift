@@ -24,31 +24,43 @@ class ListsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        
     }
     
     @objc public func showAddUserAlertController() {
         let alert = UIAlertController(title: "Enter your todo item", message: nil, preferredStyle: .alert)
+        
+//        cancel action
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+//        add action
+        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in }
+        
+//        title text field
         alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Input title here..."}
-        )
+            textField.placeholder = "Input title here..."
+            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
+        })
         
+//        descrition text field
         alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Input description here..."}
-        )
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            
-            let name = alert.textFields?[0].text
-            let des = alert.textFields?[1].text
-            let todoItemInstance = TodoItem(itemTitle: name!, descriptionText: des!)
-            store.todos.append(todoItemInstance)
-            self.tableView.reloadData()
-        }))
-        
-        self.present(alert, animated: true)
+            textField.placeholder = "Input description here..."
+            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
+        })
+        okAction.isEnabled = false
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func textChanged(_ sender:UITextField) {
+        let alert = self.presentedViewController as? UIAlertController
+        let title = alert?.textFields?[0].text
+        let description = alert?.textFields?[1].text
+        let okAction = alert!.actions.last! as UIAlertAction
+        if title != "" && description != "" {
+            okAction.isEnabled = true
+        } else {
+            okAction.isEnabled = false
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
