@@ -33,7 +33,13 @@ class ListsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
 //        add action
-        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in }
+        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let title: String = alert.textFields?[0].text ?? ""
+            let descriptionTextView = alert.textFields?[1].text
+            let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView!)
+            store.todos.append(todoItemInstance)
+            self.tableView.reloadData()
+        })
         
 //        title text field
         alert.addTextField(configurationHandler: { textField in
@@ -48,6 +54,7 @@ class ListsTableViewController: UITableViewController {
         })
         okAction.isEnabled = false
         alert.addAction(okAction)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -80,13 +87,6 @@ class ListsTableViewController: UITableViewController {
         todoCell.textLabel?.text = todoItem.itemTitle
         todoCell.detailTextLabel?.text = todoItem.descriptionText
         return todoCell
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            store.todos.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
     }
 
 }
