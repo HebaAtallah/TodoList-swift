@@ -88,5 +88,27 @@ class ListsTableViewController: UITableViewController {
         todoCell.detailTextLabel?.text = todoItem.descriptionText
         return todoCell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            store.todos.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get the index path from the cell that was tapped
+        let indexPath = tableView.indexPathForSelectedRow
+        // Get the Row of the Index Path and set as index
+//        let index = indexPath?.row
+        let todoItem = store.todos[(indexPath?.row)!]
+        // Get in touch with the DetailViewController
+        let editItemContoller = segue.destination as! EditItemContoller
+        // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+        editItemContoller.titleValuePassed = todoItem.itemTitle
+        editItemContoller.descriptionValuePassed = todoItem.descriptionText
+        editItemContoller.indexValuePassed = (indexPath?.row)!
+    }
 
 }
