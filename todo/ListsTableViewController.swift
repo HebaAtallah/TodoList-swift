@@ -15,6 +15,7 @@ class ListsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.title = "Todo List"
         navigationItem.leftBarButtonItem = self.editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddUserAlertController))
@@ -43,7 +44,7 @@ class ListsTableViewController: UITableViewController {
         
 //        title text field
         alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Input title here..."
+            textField.placeholder = NSLocalizedString("Input title here...", comment: "")
             textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
         })
         
@@ -83,11 +84,29 @@ class ListsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let todoCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
+        
         let todoItem = store.todos[indexPath.row]
         todoCell.textLabel?.text = todoItem.itemTitle
         todoCell.detailTextLabel?.text = todoItem.descriptionText
+        
         return todoCell
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let todoItem = store.todos[indexPath.row]
+//        
+//        // create the edit view controller
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let editItemContoller = mainStoryboard.instantiateViewController(withIdentifier: "edit view controller") as! EditItemContoller
+//        
+//        // configure it
+//        editItemContoller.titleValuePassed = todoItem.itemTitle
+//        editItemContoller.descriptionValuePassed = todoItem.descriptionText
+//        editItemContoller.indexValuePassed = indexPath.row
+//        
+//        // display it
+//        navigationController?.pushViewController(editItemContoller, animated: true)
+//    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -101,11 +120,13 @@ class ListsTableViewController: UITableViewController {
         // Get the index path from the cell that was tapped
         let indexPath = tableView.indexPathForSelectedRow
         // Get the Row of the Index Path and set as index
-//        let index = indexPath?.row
-        let todoItem = store.todos[(indexPath?.row)!]
+        let todoItem = store.todos[indexPath!.row]
         // Get in touch with the DetailViewController
         let editItemContoller = segue.destination as! EditItemContoller
         // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+        
+//        editItemContoller.todo = todoItem
+        
         editItemContoller.titleValuePassed = todoItem.itemTitle
         editItemContoller.descriptionValuePassed = todoItem.descriptionText
         editItemContoller.indexValuePassed = (indexPath?.row)!

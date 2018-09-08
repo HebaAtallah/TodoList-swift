@@ -17,6 +17,7 @@
 		83614199213A975B00393B36 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83614198213A975B00393B36 /* Store.swift */; };
 		8361419C213AB6C900393B36 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8361419B213AB6C900393B36 /* TodoItem.swift */; };
 		836141A021432A4000393B36 /* EditItemContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8361419F21432A4000393B36 /* EditItemContoller.swift */; };
+		836141A22143E4D100393B36 /* Stylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836141A12143E4D100393B36 /* Stylist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		83614198213A975B00393B36 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		8361419B213AB6C900393B36 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		8361419F21432A4000393B36 /* EditItemContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemContoller.swift; sourceTree = "<group>"; };
+		836141A12143E4D100393B36 /* Stylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				8361419421316A7600393B36 /* AddTodoController.swift */,
 				8361419621372F9200393B36 /* ListsTableViewController.swift */,
 				83614198213A975B00393B36 /* Store.swift */,
+				836141A12143E4D100393B36 /* Stylist.swift */,
 				836141892130295900393B36 /* Assets.xcassets */,
 				8361418B2130295900393B36 /* LaunchScreen.storyboard */,
 				8361418E2130295900393B36 /* Info.plist */,
@@ -162,6 +165,7 @@
 				836141852130295700393B36 /* MainScreenController.swift in Sources */,
 				836141832130295700393B36 /* AppDelegate.swift in Sources */,
 				836141A021432A4000393B36 /* EditItemContoller.swift in Sources */,
+				836141A22143E4D100393B36 /* Stylist.swift in Sources */,
 				8361419521316A7600393B36 /* AddTodoController.swift in Sources */,
 				8361419C213AB6C900393B36 /* TodoItem.swift in Sources */,
 				8361419721372F9200393B36 /* ListsTableViewController.swift in Sources */,

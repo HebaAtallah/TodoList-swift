@@ -10,5 +10,7 @@ import Foundation
 
 struct TodoItem {
     let itemTitle : String
+//    let title : String
     let descriptionText : String
+//    let description : String
 }

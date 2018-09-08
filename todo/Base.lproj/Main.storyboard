@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zO-4X-NJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="55"/>
+            <point key="canvasLocation" x="-156" y="34"/>
         </scene>
         <!--Add Todo Controller-->
         <scene sceneID="PGd-mX-l24">
