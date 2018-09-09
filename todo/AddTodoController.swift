@@ -14,6 +14,7 @@ class AddTodoController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var validationMsg: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     
     // MARK: - Object lifecycle
     
@@ -69,8 +70,9 @@ class AddTodoController: UIViewController, UITextViewDelegate {
 //        }
         
         // Nil coalasing operator `??`
+//        self.photo.image = UIImage(named: "Apple")
         let title: String = itemTitle.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView.text)
+        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView.text, image: "Apple")
         store.todos.append(todoItemInstance)
         navigationController?.popViewController(animated: true)
     }

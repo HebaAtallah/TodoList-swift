@@ -130,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="7yZ-eG-h0S">
-                                <rect key="frame" x="20" y="94" width="335" height="205"/>
+                                <rect key="frame" x="20" y="195" width="335" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VZn-Kb-Ggx">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="58.5"/>
@@ -175,7 +175,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2d-1p-pQq">
-                                <rect key="frame" x="152.5" y="409" width="70" height="30"/>
+                                <rect key="frame" x="152.5" y="510" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.52941176470588236" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="bqV-pd-wL6"/>
@@ -188,11 +188,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill all the TextFields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYC-Rn-QmA">
-                                <rect key="frame" x="85.5" y="337" width="204" height="21"/>
+                                <rect key="frame" x="85.5" y="438" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.32476956229999998" blue="0.27509716969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUS-fq-RR5">
+                                <rect key="frame" x="107" y="78" width="160" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -202,7 +206,7 @@
                             <constraint firstItem="7yZ-eG-h0S" firstAttribute="leading" secondItem="iMN-8i-Ydy" secondAttribute="leading" constant="20" id="SF1-Dj-AFP"/>
                             <constraint firstItem="oYC-Rn-QmA" firstAttribute="centerX" secondItem="d3D-PF-cYj" secondAttribute="centerX" id="TQ6-ye-0UE"/>
                             <constraint firstItem="L2d-1p-pQq" firstAttribute="top" secondItem="7yZ-eG-h0S" secondAttribute="bottom" constant="110" id="Zah-nY-ZA0"/>
-                            <constraint firstItem="7yZ-eG-h0S" firstAttribute="top" secondItem="iMN-8i-Ydy" secondAttribute="top" constant="30" id="aGl-D9-hrk"/>
+                            <constraint firstItem="7yZ-eG-h0S" firstAttribute="top" secondItem="iMN-8i-Ydy" secondAttribute="top" constant="131" id="aGl-D9-hrk"/>
                             <constraint firstItem="L2d-1p-pQq" firstAttribute="centerX" secondItem="d3D-PF-cYj" secondAttribute="centerX" id="b6q-zF-JxO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iMN-8i-Ydy"/>
@@ -211,13 +215,14 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="9l0-m5-BXm" id="Nye-fA-4ge"/>
                         <outlet property="itemTitle" destination="cQ9-wq-vIK" id="yRt-EP-8eX"/>
+                        <outlet property="photo" destination="QUS-fq-RR5" id="5Oa-vK-aHH"/>
                         <outlet property="saveBtn" destination="L2d-1p-pQq" id="tEf-3J-cTq"/>
                         <outlet property="validationMsg" destination="oYC-Rn-QmA" id="39c-Bc-hPG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIk-RD-bzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110" y="810"/>
+            <point key="canvasLocation" x="-111.2" y="809.14542728635683"/>
         </scene>
         <!--Lists Table View Controller-->
         <scene sceneID="8Yx-g5-527">

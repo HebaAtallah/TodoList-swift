@@ -21,10 +21,10 @@ class Store {
 //        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada"),
 //        ]
     var todos = [
-        TodoItem(itemTitle: "test1", descriptionText: "Lorem Ipsum"),
-        TodoItem(itemTitle: "test2", descriptionText: "Aenean condimentum"),
-        TodoItem(itemTitle: "test3", descriptionText: "Aenean condimentumdd"),
-        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada"),
+        TodoItem(itemTitle: "test1", descriptionText: "Lorem Ipsum", image: "Apple"),
+        TodoItem(itemTitle: "test2", descriptionText: "Aenean condimentum", image: "Apricot"),
+        TodoItem(itemTitle: "test3", descriptionText: "Aenean condimentumdd", image: "Banana"),
+        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada", image: "Cantaloupe"),
         ]
     
     func add(todo: TodoItem) {

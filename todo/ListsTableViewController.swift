@@ -37,7 +37,7 @@ class ListsTableViewController: UITableViewController {
         let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             let title: String = alert.textFields?[0].text ?? ""
             let descriptionTextView = alert.textFields?[1].text
-            let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView!)
+            let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView!, image: "Apple")
             store.todos.append(todoItemInstance)
             self.tableView.reloadData()
         })
@@ -88,7 +88,8 @@ class ListsTableViewController: UITableViewController {
         let todoItem = store.todos[indexPath.row]
         todoCell.textLabel?.text = todoItem.itemTitle
         todoCell.detailTextLabel?.text = todoItem.descriptionText
-        
+        todoCell.imageView?.image = UIImage(named: todoItem.image)
+
         return todoCell
     }
     

@@ -40,7 +40,7 @@ class EditItemContoller: UIViewController {
     func applyUpdateItem() {
         // Nil coalasing operator `??`
         let title = titleTextField.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextField.text)
+        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextField.text, image: "Apple")
         store.todos[indexValuePassed] = todoItemInstance
         navigationController?.popViewController(animated: true)
     }

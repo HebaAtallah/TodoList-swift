@@ -12,5 +12,6 @@ struct TodoItem {
     let itemTitle : String
 //    let title : String
     let descriptionText : String
+    let image: String
 //    let description : String
 }
