@@ -18,7 +18,7 @@ class ListsTableViewController: UITableViewController {
         
         navigationItem.title = "Todo List"
         navigationItem.leftBarButtonItem = self.editButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddUserAlertController))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddUserAlertController))
         tableview.reloadData()
     }
     
@@ -116,10 +116,11 @@ class ListsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        guard segue.identifier == "Edit Segue" else { return }
         // Get the index path from the cell that was tapped
         let indexPath = tableView.indexPathForSelectedRow
         // Get the Row of the Index Path and set as index
+        print(segue)
         let todoItem = store.todos[indexPath!.row]
         // Get in touch with the DetailViewController
         let editItemContoller = segue.destination as! EditItemContoller
