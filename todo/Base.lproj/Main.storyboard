@@ -34,8 +34,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyf-IF-z6J">
+                                <rect key="frame" x="102" y="82" width="170" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="HSB-qK-bIC">
-                                <rect key="frame" x="20" y="94" width="335" height="205"/>
+                                <rect key="frame" x="20" y="194" width="335" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bne-Lr-QMF">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="58.5"/>
@@ -80,13 +84,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill all the TextFields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbJ-Bl-bwr">
-                                <rect key="frame" x="85" y="337" width="204" height="20.5"/>
+                                <rect key="frame" x="85" y="437" width="204" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.32476956229999998" blue="0.27509716969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-fm-leH">
-                                <rect key="frame" x="148" y="407.5" width="80" height="30"/>
+                                <rect key="frame" x="148" y="507.5" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="bnV-Ju-oug"/>
@@ -106,13 +110,14 @@
                             <constraint firstItem="HSB-qK-bIC" firstAttribute="centerX" secondItem="WFx-Ak-TzV" secondAttribute="centerX" id="D47-8G-pqZ"/>
                             <constraint firstItem="iBn-fm-leH" firstAttribute="top" secondItem="UbJ-Bl-bwr" secondAttribute="bottom" constant="50" id="Jh2-Vg-602"/>
                             <constraint firstItem="iBn-fm-leH" firstAttribute="centerX" secondItem="WFx-Ak-TzV" secondAttribute="centerX" id="Krx-gB-rAu"/>
-                            <constraint firstItem="HSB-qK-bIC" firstAttribute="top" secondItem="A8x-FJ-ExV" secondAttribute="top" constant="30" id="Nlc-Qe-YvG"/>
+                            <constraint firstItem="HSB-qK-bIC" firstAttribute="top" secondItem="A8x-FJ-ExV" secondAttribute="top" constant="130" id="Nlc-Qe-YvG"/>
                             <constraint firstItem="UbJ-Bl-bwr" firstAttribute="top" secondItem="HSB-qK-bIC" secondAttribute="bottom" constant="38" id="a5O-mP-MbN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A8x-FJ-ExV"/>
                     </view>
                     <connections>
                         <outlet property="descriptionTextField" destination="dXb-m0-oeh" id="Qbm-mn-6eV"/>
+                        <outlet property="editedImage" destination="xyf-IF-z6J" id="FmX-dv-kTy"/>
                         <outlet property="titleTextField" destination="SeC-5T-686" id="6GS-Ru-YCA"/>
                         <outlet property="updateValidationMessage" destination="UbJ-Bl-bwr" id="fHf-Zn-hzt"/>
                     </connections>
@@ -193,10 +198,25 @@
                                 <color key="textColor" red="1" green="0.32476956229999998" blue="0.27509716969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUS-fq-RR5">
-                                <rect key="frame" x="107" y="78" width="160" height="93"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLb-u3-crS">
+                                <rect key="frame" x="116" y="91" width="142" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MsR-Y2-JFX">
+                                <rect key="frame" x="20" y="476" width="270" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-Gy-43M">
+                                <rect key="frame" x="157" y="113" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" red="0.99263454399999995" green="1" blue="0.99337779439999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadImages:" destination="W3D-xO-ngg" eventType="touchUpInside" id="WwI-yu-ctb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -215,8 +235,9 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="9l0-m5-BXm" id="Nye-fA-4ge"/>
                         <outlet property="itemTitle" destination="cQ9-wq-vIK" id="yRt-EP-8eX"/>
-                        <outlet property="photo" destination="QUS-fq-RR5" id="5Oa-vK-aHH"/>
+                        <outlet property="photo" destination="jLb-u3-crS" id="mZb-Zy-ld2"/>
                         <outlet property="saveBtn" destination="L2d-1p-pQq" id="tEf-3J-cTq"/>
+                        <outlet property="upload" destination="VSc-Gy-43M" id="tsS-vq-uIc"/>
                         <outlet property="validationMsg" destination="oYC-Rn-QmA" id="39c-Bc-hPG"/>
                     </connections>
                 </viewController>

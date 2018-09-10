@@ -6,7 +6,7 @@
 //  Copyright © 2018 Heba Atallah. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let store = Store()
 
@@ -21,10 +21,10 @@ class Store {
 //        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada"),
 //        ]
     var todos = [
-        TodoItem(itemTitle: "test1", descriptionText: "Lorem Ipsum", image: "Apple"),
-        TodoItem(itemTitle: "test2", descriptionText: "Aenean condimentum", image: "Apricot"),
-        TodoItem(itemTitle: "test3", descriptionText: "Aenean condimentumdd", image: "Banana"),
-        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada", image: "Cantaloupe"),
+        TodoItem(itemTitle: "test1", descriptionText: "Lorem Ipsum", image: UIImage(named: "Apple")!),
+        TodoItem(itemTitle: "test2", descriptionText: "Aenean condimentum", image: UIImage(named: "Apricot")!),
+        TodoItem(itemTitle: "test3", descriptionText: "Aenean condimentumdd", image: UIImage(named: "Banana")!),
+        TodoItem(itemTitle: "test4", descriptionText: "Aenean condimentumada", image: UIImage(named: "Cantaloupe")!),
         ]
     
     func add(todo: TodoItem) {

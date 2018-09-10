@@ -8,19 +8,21 @@
 
 import UIKit
 
-class AddTodoController: UIViewController, UITextViewDelegate {
+class AddTodoController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var validationMsg: UILabel!
     @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var upload: UIButton!
     
     // MARK: - Object lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         validationMsg.isHidden = true
+        upload.isHidden = false
         applyStyle(for: descriptionTextView)
     }
     
@@ -70,10 +72,33 @@ class AddTodoController: UIViewController, UITextViewDelegate {
 //        }
         
         // Nil coalasing operator `??`
-//        self.photo.image = UIImage(named: "Apple")
         let title: String = itemTitle.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView.text, image: "Apple")
+        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView.text, image: photo.image!)
         store.todos.append(todoItemInstance)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func uploadImages(_ sender: Any) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self
+        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        upload.isHidden = true
+        photo.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        photo.backgroundColor = UIColor.clear
+        self.dismiss(animated: true, completion: nil)
+//        uploadImage()
+    }
+//
+//    func uploadImage () {
+//        let imageData = UIImageJPEGRepresentation(photo.image!, 1)
+//        guard imageData == nil else {return }
+//    }
+//
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
     }
 }

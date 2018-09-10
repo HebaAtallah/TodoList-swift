@@ -17,8 +17,6 @@ class ListsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Todo List"
-        navigationItem.leftBarButtonItem = self.editButtonItem
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddUserAlertController))
         tableview.reloadData()
     }
     
@@ -27,37 +25,36 @@ class ListsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    @objc public func showAddUserAlertController() {
-        let alert = UIAlertController(title: "Enter your todo item", message: nil, preferredStyle: .alert)
+//    @objc public func showAddUserAlertController() {
+//        let alert = UIAlertController(title: "Enter your todo item", message: nil, preferredStyle: .alert)
         
 //        cancel action
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
 //        add action
-        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            let title: String = alert.textFields?[0].text ?? ""
-            let descriptionTextView = alert.textFields?[1].text
-            let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView!, image: "Apple")
-            store.todos.append(todoItemInstance)
-            self.tableView.reloadData()
-        })
+//        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+//            let title: String = alert.textFields?[0].text ?? ""
+//            let descriptionTextView = alert.textFields?[1].text
+//            let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView!, image: "Apple")
+//            store.todos.append(todoItemInstance)
+//            self.tableView.reloadData()
+//        })
         
 //        title text field
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = NSLocalizedString("Input title here...", comment: "")
-            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
-        })
-        
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.placeholder = NSLocalizedString("Input title here...", comment: "")
+//            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
+//        })
 //        descrition text field
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Input description here..."
-            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
-        })
-        okAction.isEnabled = false
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.placeholder = "Input description here..."
+//            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: UIControlEvents.editingChanged)
+//        })
+//        okAction.isEnabled = false
+//        alert.addAction(okAction)
+//        
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
     @objc func textChanged(_ sender:UITextField) {
         let alert = self.presentedViewController as? UIAlertController
@@ -88,7 +85,7 @@ class ListsTableViewController: UITableViewController {
         let todoItem = store.todos[indexPath.row]
         todoCell.textLabel?.text = todoItem.itemTitle
         todoCell.detailTextLabel?.text = todoItem.descriptionText
-        todoCell.imageView?.image = UIImage(named: todoItem.image)
+        todoCell.imageView?.image = todoItem.image
 
         return todoCell
     }
@@ -132,6 +129,7 @@ class ListsTableViewController: UITableViewController {
         editItemContoller.titleValuePassed = todoItem.itemTitle
         editItemContoller.descriptionValuePassed = todoItem.descriptionText
         editItemContoller.indexValuePassed = (indexPath?.row)!
+        editItemContoller.imageValuePassed = (todoItem.image)
     }
 
 }

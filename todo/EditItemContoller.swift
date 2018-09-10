@@ -9,22 +9,23 @@
 import UIKit
 
 class EditItemContoller: UIViewController {
-    var titleValuePassed:String = ""
-    var descriptionValuePassed:String = ""
-    var indexValuePassed:Int = 0
-
+    var titleValuePassed: String = ""
+    var descriptionValuePassed: String = ""
+    var indexValuePassed: Int = 0
+    var imageValuePassed: UIImage = UIImage(named: "Banana")!
 //    var todo: TodoItem!
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var updateValidationMessage: UILabel!
+    @IBOutlet weak var editedImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateValidationMessage.isHidden = true
         titleTextField.text = titleValuePassed
         descriptionTextField.text = descriptionValuePassed
-        
+        editedImage.image = imageValuePassed
         Stylist.applyStyle(for: descriptionTextField)
     }
     
@@ -40,7 +41,7 @@ class EditItemContoller: UIViewController {
     func applyUpdateItem() {
         // Nil coalasing operator `??`
         let title = titleTextField.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextField.text, image: "Apple")
+        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextField.text, image: UIImage(named: "Apple")!)
         store.todos[indexValuePassed] = todoItemInstance
         navigationController?.popViewController(animated: true)
     }

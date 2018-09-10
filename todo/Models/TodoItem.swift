@@ -6,12 +6,12 @@
 //  Copyright © 2018 Heba Atallah. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct TodoItem {
     let itemTitle : String
 //    let title : String
     let descriptionText : String
-    let image: String
+    let image: UIImage
 //    let description : String
 }
