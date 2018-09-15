@@ -9,9 +9,7 @@
 import UIKit
 
 struct TodoItem {
-    let itemTitle : String
-//    let title : String
-    let descriptionText : String
+    let title : String
+    let description : String
     let image: UIImage
-//    let description : String
 }

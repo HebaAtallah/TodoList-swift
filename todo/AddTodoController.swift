@@ -21,37 +21,12 @@ class AddTodoController: UIViewController, UITextViewDelegate, UIImagePickerCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        validationMsg.isHidden = true
-        upload.isHidden = false
-        applyStyle(for: descriptionTextView)
+        
+        // set values
+        setValues()
+        Stylist.applyStyle(for: descriptionTextView)
     }
     
-    // MARK: - TextFieldDelegate
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if descriptionTextView.textColor == UIColor.lightGray {
-            descriptionTextView.text = nil
-            descriptionTextView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if descriptionTextView.text.isEmpty {
-            descriptionTextView.text = "Description"
-            descriptionTextView.textColor = UIColor.lightGray
-        }
-    }
-    
-    func applyStyle(for textView: UITextView) {
-        guard textView == descriptionTextView else { return }
-        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-        descriptionTextView.layer.borderWidth = 0.5
-        descriptionTextView.layer.borderColor = borderColor.cgColor
-        descriptionTextView.layer.cornerRadius = 5.0
-        descriptionTextView.text = "Description"
-        descriptionTextView.textColor = UIColor.lightGray
-    }
-
     @IBAction func addNewItem(_ sender: Any) {
         if descriptionTextView.text != "Description" && itemTitle.text != "" {
             validationMsg.isHidden = true
@@ -59,23 +34,6 @@ class AddTodoController: UIViewController, UITextViewDelegate, UIImagePickerCont
         } else {
             validationMsg.isHidden = false
         }
-    }
-
-    func applyAddItem() {
-        
-//        let title: String
-//        // Optional binding
-//        if let itemTitle = itemTitle.text {
-//            title = itemTitle
-//        } else {
-//            title = ""
-//        }
-        
-        // Nil coalasing operator `??`
-        let title: String = itemTitle.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextView.text, image: photo.image!)
-        store.todos.append(todoItemInstance)
-        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func uploadImages(_ sender: Any) {
@@ -85,20 +43,40 @@ class AddTodoController: UIViewController, UITextViewDelegate, UIImagePickerCont
         self.present(myPickerController, animated: true, completion: nil)
     }
     
+    func setValues() {
+        validationMsg.isHidden = true
+        upload.isHidden = false
+    }
+    
+    // MARK: - TextFieldDelegate
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        guard descriptionTextView.textColor == UIColor.lightGray else { return }
+        
+        textView.text = nil
+        textView.textColor = UIColor.black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard descriptionTextView.text.isEmpty else { return }
+        
+        textView.text = "Description"
+        textView.textColor = UIColor.lightGray
+    }
+
+    func applyAddItem() {
+        let title: String = itemTitle.text ?? ""
+        let todoItemInstance = TodoItem(title: title, description: descriptionTextView.text, image: photo.image!)
+        
+        store.add(todo: todoItemInstance)
+        navigationController?.popViewController(animated: true)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         upload.isHidden = true
         photo.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         photo.backgroundColor = UIColor.clear
-        self.dismiss(animated: true, completion: nil)
-//        uploadImage()
-    }
-//
-//    func uploadImage () {
-//        let imageData = UIImageJPEGRepresentation(photo.image!, 1)
-//        guard imageData == nil else {return }
-//    }
-//
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
+        self.dismiss(animated: true, completion: nil)
     }
 }

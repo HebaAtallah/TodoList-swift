@@ -13,7 +13,8 @@ class EditItemContoller: UIViewController {
     var descriptionValuePassed: String = ""
     var indexValuePassed: Int = 0
     var imageValuePassed: UIImage = UIImage(named: "Banana")!
-//    var todo: TodoItem!
+    var selectedItem: TodoItem!
+
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextView!
@@ -22,10 +23,9 @@ class EditItemContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateValidationMessage.isHidden = true
-        titleTextField.text = titleValuePassed
-        descriptionTextField.text = descriptionValuePassed
-        editedImage.image = imageValuePassed
+        
+        // set values
+        setValues()
         Stylist.applyStyle(for: descriptionTextField)
     }
     
@@ -38,11 +38,17 @@ class EditItemContoller: UIViewController {
         }
     }
     
+    func setValues() {
+        titleTextField.text = selectedItem.title
+        descriptionTextField.text = selectedItem.description
+        editedImage.image = selectedItem.image
+        updateValidationMessage.isHidden = true
+    }
+    
     func applyUpdateItem() {
-        // Nil coalasing operator `??`
         let title = titleTextField.text ?? ""
-        let todoItemInstance = TodoItem(itemTitle: title, descriptionText: descriptionTextField.text, image: UIImage(named: "Apple")!)
-        store.todos[indexValuePassed] = todoItemInstance
+        let todoItemInstance = TodoItem(title: title, description: descriptionTextField.text, image: editedImage.image!)
+        store.update(todo: todoItemInstance, index: indexValuePassed)
         navigationController?.popViewController(animated: true)
     }
 }

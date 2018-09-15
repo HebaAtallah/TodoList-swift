@@ -16,6 +16,9 @@ class Stylist {
         textView.layer.borderWidth = 0.5
         textView.layer.borderColor = borderColor.cgColor
         textView.layer.cornerRadius = 5.0
+        guard textView.text.isEmpty else { return }
+        textView.text = "Description"
+        textView.textColor = UIColor.lightGray
     }
     
 }
